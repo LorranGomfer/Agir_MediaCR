@@ -23,8 +23,7 @@ public class Aluno {
         if (!existDisciplina(disciplina.getCodDisciplina())) { //Se não existe essa disciplina, adiciona
             disciplinas.put(CodDisciplina, disciplina);
         }//else System.out.println("Sobrescrição disciplina");
-
-
+        
     }
 
     public boolean existDisciplina(String codDisciplina) { //Verifica se essa disciplina já existe neste aluno
