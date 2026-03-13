@@ -1,0 +1,10 @@
+# Compilados do Maven (arquivos gerados)
+target/
+
+# Configurações do IntelliJ IDEA
+.idea/
+*.iml
+
+# Logs e arquivos temporários
+*.log
+.DS_Store
