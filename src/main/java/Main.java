@@ -17,9 +17,17 @@ public class Main {
 
         try (BufferedReader leitor = new BufferedReader(new FileReader(caminhoArq))) {
             String linha = leitor.readLine();
+            linha = leitor.readLine();
             while (linha != null) {
 
                 String[] campos = linha.split(",");
+                String matricula = campos[0];
+                String codDisciplina = campos[1];
+                String codCurso = campos[2];
+                double nota = Double.parseDouble(campos[3]);
+                int cargaHoraria = Integer.parseInt(campos[4]);
+                int anoSemestre = Integer.parseInt(campos[5]);
+
 
                 /*
                 Campos:
@@ -31,25 +39,25 @@ public class Main {
                 [5]Ano Semestre
                 */
 
-                if (isNumeric(campos[0])) { //Testa se este campo é realmente uma matricula, considerando que a matricula é um numero
+                if (isNumeric(matricula)) { //Testa se este campo é realmente uma matricula, considerando que a matricula é um numero
 
                     Curso novoCurso = new Curso();
-                    novoCurso.setCodCurso(campos[2]);
+                    novoCurso.setCodCurso(codCurso);
 
                     //Criando disciplina
                     Disciplina novaDisciplina = new Disciplina();
-                    novaDisciplina.setCodDisciplina(campos[1]);
-                    novaDisciplina.setNota(Double.parseDouble(campos[3]));
-                    novaDisciplina.setCargaHoraria(Integer.parseInt(campos[4]));
+                    novaDisciplina.setCodDisciplina(codDisciplina);
+                    novaDisciplina.setNota(nota);
+                    novaDisciplina.setCargaHoraria(cargaHoraria);
 
 
                     //Criando aluno
                     Aluno novoAluno = new Aluno();
-                    novoAluno.setMatricula(campos[0]);
-                    novoAluno.addDisciplina(campos[1], novaDisciplina);
+                    novoAluno.setMatricula(matricula);
+                    novoAluno.addDisciplina(codDisciplina, novaDisciplina);
 
 
-                    if (cursos.get(campos[2]) == null) { //Se esse curso não existe
+                    if (cursos.get(codCurso) == null) { //Se esse curso não existe
 
 
                         if (novoCurso.existAluno(novoAluno.getMatricula())) {//Se existe aluno...
@@ -62,17 +70,17 @@ public class Main {
 
                         }
 
-                        cursos.put(campos[2], novoCurso);
+                        cursos.put(codCurso, novoCurso);
 
                     } else {
 
-                        if (cursos.get(campos[2]).existAluno(campos[0])) { //Se existe aluno...
+                        if (cursos.get(codCurso).existAluno(matricula)) { //Se existe aluno...
 
-                          cursos.get(campos[2]).getAluno(campos[0]).addDisciplina(novaDisciplina.getCodDisciplina(), novaDisciplina);
+                          cursos.get(codCurso).getAluno(matricula).addDisciplina(novaDisciplina.getCodDisciplina(), novaDisciplina);
 
                         } else {   //Se não existe aluno
 
-                            cursos.get(campos[2]).addAluno(campos[0], novoAluno); //Adiciona.
+                            cursos.get(codCurso).addAluno(matricula, novoAluno); //Adiciona.
 
                         }
 
@@ -82,7 +90,7 @@ public class Main {
                 /*
                 System.out.println(linha);
                 String separador = " | ";
-                System.out.println(campos[0] + separador + campos[1] + separador + campos[2]+ separador + campos[3]+ separador + campos[4]+ separador + campos[5]);
+                System.out.println(matricula + separador + codDisciplina + separador + codCurso+ separador + nota+ separador + cargaHoraria+ separador + anoSemestre);
                 */
                 linha = leitor.readLine();
 
