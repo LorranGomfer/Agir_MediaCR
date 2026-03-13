@@ -28,32 +28,30 @@ public class Curso {
         this.nome = nome;
     }
 
-    public Map<String, Aluno> mapAlunos() { //Retorna o conjunto de alunos deste curso
+    public Map<String, Aluno> mapAlunos() {
         return alunos;
     }
 
-    public Aluno getAluno(String matricula) { //Retorna um unico aluno deste curso
+    public Aluno getAluno(String matricula) {
 
         return alunos.get(matricula);
     }
 
     public void addAluno(String matricula, Aluno aluno) {
-            if (!existAluno(matricula)) { //Se não existe aluno com essa matricula...
+            if (!existAluno(matricula)) {
 
-                alunos.put(matricula, aluno); //adiciona no map
+                alunos.put(matricula, aluno);
 
-            }else { //Se já existe aluno...
+            }else {
 
-                for (String key : aluno.mapDisciplinas().keySet()) { // Adiciona as disciplinas
+                for (String key : aluno.mapDisciplinas().keySet()) {
                     alunos.get(matricula).addDisciplina(key,aluno.getDisciplina(key));
                 }
-
-                //System.out.println("Sobrescrição de aluno");
             }
 
     }
 
-    public boolean existAluno(String matricula) { //Verifica a existencia do aluno neste curso
+    public boolean existAluno(String matricula) {
 
         if (alunos.get(matricula) == null) return false;
 

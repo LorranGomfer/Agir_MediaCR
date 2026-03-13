@@ -21,17 +21,7 @@ public class Main {
 
                 String[] campos = linha.split(",");
 
-                /*
-                Campos:
-                [0]Matricula;
-                [1]Cod. Disciplina;
-                [2]Cod. Curso;
-                [3]Nota;
-                [4]Carga Horaria;
-                [5]Ano Semestre
-                */
-
-                if (isNumeric(campos[0])) { //Testa se este campo é realmente uma matricula, considerando que a matricula é um numero
+                if (isNumeric(campos[0])) {
 
                     String matricula = campos[0];
                     String codDisciplina = campos[1];
@@ -47,20 +37,13 @@ public class Main {
                         cursos.put(codCurso,novoCurso);
                     }
 
-                    //Criando disciplina
                     Disciplina novaDisciplina = new Disciplina(codDisciplina, cargaHoraria, nota, anoSemestre);
 
-                    //Criando aluno
                     Aluno novoAluno = new Aluno(matricula);
                     novoAluno.addDisciplina(codDisciplina, novaDisciplina);
 
                     novoCurso.addAluno(matricula,novoAluno);
                 }
-                /*
-                System.out.println(linha);
-                String separador = " | ";
-                System.out.println(matricula + separador + codDisciplina + separador + codCurso+ separador + nota+ separador + cargaHoraria+ separador + anoSemestre);
-                */
                 linha = leitor.readLine();
 
 
@@ -72,58 +55,7 @@ public class Main {
 
         imprimirMediaCursos(cursos);
         imprimirMediaAlunos(cursos);
-      //  calcularAlunos(cursos);
-      //  calcularDisciplinas(cursos);
 
-
-    }
-
-    public static void calcularCursos(Map<String, Curso> cursos) {
-
-        int c = 0;
-        //System.out.println("Cursos:");
-        for (String key : cursos.keySet()) {
-            c += 1;
-            //System.out.println(key);
-        }
-        System.out.println("Quantidade de Cursos: " + c);
-    }
-
-    public static void calcularAlunos(Map<String, Curso> cursos) {
-
-        int a = 0;
-        //System.out.println("Cursos:");
-        for (String key : cursos.keySet()) {
-            a += cursos.get(key).mapAlunos().size();
-            //System.out.println("Quantidade de Alunos do curso " + key +": " + a);
-        }
-        System.out.println("Quantidade de Alunos: " + a);
-    }
-
-    public static void calcularDisciplinas(Map<String, Curso> cursos) {
-
-        int d = 0;
-        //System.out.println("Cursos:");
-        for (String key : cursos.keySet()) {
-            for (String chave : cursos.get(key).mapAlunos().keySet()) {
-                d += cursos.get(key).mapAlunos().get(chave).mapDisciplinas().size();
-//                for (String chavi : cursos.get(key).mapAlunos().keySet()) {
-//                    System.out.println(cursos.get(key).mapAlunos().get(chave).getDisciplina(chavi));
-//                }
-
-            }
-        }
-        System.out.println("Quantidade de Disciplinas: " + d);
-
-    }
-
-    public static void imprimirCurso(Curso curso) {
-        System.out.println("Curso: " );
-        int n = 1;
-        for(String key: curso.mapAlunos().keySet()) {//Para cada key desse map OU Para cada aluno deste curso
-           System.out.println("Aluno "+ n + " :" + key );
-           n ++;
-        }
     }
 
     public static boolean isNumeric(String str) { //Testa se uma string é um valor numerico
