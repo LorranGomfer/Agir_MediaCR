@@ -6,6 +6,12 @@ public class Disciplina {
     private double nota;
     private int semestre;
 
+    public Disciplina (String codDisciplina, int cargaHoraria, double nota, int semestre){
+        this.codDisciplina = codDisciplina;
+        this.cargaHoraria = cargaHoraria;
+        this.nota = nota;
+        this.semestre = semestre;
+    }
     public String getCodDisciplina() {
         return codDisciplina;
     }

@@ -9,6 +9,10 @@ public class Aluno {
 
     private Map<String,Disciplina> disciplinas = new HashMap<>();
 
+    public Aluno(String matricula) {
+        this.matricula = matricula;
+        this.disciplinas = new HashMap<>();
+    }
     public Map<String, Disciplina> mapDisciplinas() { //Retorna o conjunto de disciplinas
 
         return disciplinas;

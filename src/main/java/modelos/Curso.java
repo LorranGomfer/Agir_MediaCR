@@ -8,6 +8,10 @@ public class Curso {
     private String codCurso;
     private Map<String, Aluno> alunos = new HashMap<>();
 
+
+    public Curso (String codCurso){
+        this.codCurso = codCurso;
+    }
     public String getCodCurso() {
         return codCurso;
     }
