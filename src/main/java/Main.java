@@ -1,11 +1,11 @@
-package main;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
 
-import main.modelos.*;
+import modelos.Aluno;
+import modelos.Disciplina;
+import modelos.Curso;
 
 public class Main {
 
