@@ -1,4 +1,4 @@
-package modelos;
+package main.modelos;
 
 public class Disciplina {
     private String codDisciplina;

@@ -1,15 +1,17 @@
+package main;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
 
-import modelos.*;
+import main.modelos.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        String caminhoArq = "out/production/AGIR_CRMedia/arqs/notas.csv";
+        String caminhoArq = "src/main/resources/arqs/notas.csv";
 
         Map<String, Curso> cursos = new HashMap<>();
 
