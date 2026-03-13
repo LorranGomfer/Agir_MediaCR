@@ -1,11 +1,11 @@
+import modelos.Aluno;
+import modelos.Curso;
+import modelos.Disciplina;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
-
-import modelos.Aluno;
-import modelos.Disciplina;
-import modelos.Curso;
 
 public class Main {
 
@@ -17,17 +17,9 @@ public class Main {
 
         try (BufferedReader leitor = new BufferedReader(new FileReader(caminhoArq))) {
             String linha = leitor.readLine();
-            linha = leitor.readLine();
             while (linha != null) {
 
                 String[] campos = linha.split(",");
-                String matricula = campos[0];
-                String codDisciplina = campos[1];
-                String codCurso = campos[2];
-                double nota = Double.parseDouble(campos[3]);
-                int cargaHoraria = Integer.parseInt(campos[4]);
-                int anoSemestre = Integer.parseInt(campos[5]);
-
 
                 /*
                 Campos:
@@ -39,9 +31,21 @@ public class Main {
                 [5]Ano Semestre
                 */
 
-                if (isNumeric(matricula)) { //Testa se este campo é realmente uma matricula, considerando que a matricula é um numero
+                if (isNumeric(campos[0])) { //Testa se este campo é realmente uma matricula, considerando que a matricula é um numero
 
-                    Curso novoCurso = new Curso(codCurso);
+                    String matricula = campos[0];
+                    String codDisciplina = campos[1];
+                    String codCurso = campos[2];
+                    double nota = Double.parseDouble(campos[3]);
+                    int cargaHoraria = Integer.parseInt(campos[4]);
+                    int anoSemestre = Integer.parseInt(campos[5]);
+
+                    Curso novoCurso = cursos.get(codCurso);
+
+                    if (novoCurso == null){
+                        novoCurso = new Curso(codCurso);
+                        cursos.put(codCurso,novoCurso);
+                    }
 
                     //Criando disciplina
                     Disciplina novaDisciplina = new Disciplina(codDisciplina, cargaHoraria, nota, anoSemestre);
@@ -50,8 +54,10 @@ public class Main {
                     Aluno novoAluno = new Aluno(matricula);
                     novoAluno.addDisciplina(codDisciplina, novaDisciplina);
 
+                    novoCurso.addAluno(matricula,novoAluno);
 
-                    if (cursos.get(codCurso) == null) { //Se esse curso não existe
+
+          /*          if (cursos.get(codCurso) == null) { //Se esse curso não existe
 
 
                         if (novoCurso.existAluno(novoAluno.getMatricula())) {//Se existe aluno...
@@ -78,7 +84,7 @@ public class Main {
 
                         }
 
-                    }
+                    }*/
 
                 }
                 /*
