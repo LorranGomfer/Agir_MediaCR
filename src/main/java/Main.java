@@ -55,37 +55,6 @@ public class Main {
                     novoAluno.addDisciplina(codDisciplina, novaDisciplina);
 
                     novoCurso.addAluno(matricula,novoAluno);
-
-
-          /*          if (cursos.get(codCurso) == null) { //Se esse curso não existe
-
-
-                        if (novoCurso.existAluno(novoAluno.getMatricula())) {//Se existe aluno...
-
-                           novoCurso.getAluno(novoAluno.getMatricula()).addDisciplina(novaDisciplina.getCodDisciplina(), novaDisciplina);
-
-                        } else {   //Se não existe aluno
-
-                            novoCurso.addAluno(novoAluno.getMatricula(), novoAluno); //Adiciona.
-
-                        }
-
-                        cursos.put(codCurso, novoCurso);
-
-                    } else {
-
-                        if (cursos.get(codCurso).existAluno(matricula)) { //Se existe aluno...
-
-                          cursos.get(codCurso).getAluno(matricula).addDisciplina(novaDisciplina.getCodDisciplina(), novaDisciplina);
-
-                        } else {   //Se não existe aluno
-
-                            cursos.get(codCurso).addAluno(matricula, novoAluno); //Adiciona.
-
-                        }
-
-                    }*/
-
                 }
                 /*
                 System.out.println(linha);
@@ -108,8 +77,6 @@ public class Main {
 
 
     }
-
-    // public static void
 
     public static void calcularCursos(Map<String, Curso> cursos) {
 
