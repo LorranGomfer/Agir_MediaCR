@@ -41,19 +41,13 @@ public class Main {
 
                 if (isNumeric(matricula)) { //Testa se este campo é realmente uma matricula, considerando que a matricula é um numero
 
-                    Curso novoCurso = new Curso();
-                    novoCurso.setCodCurso(codCurso);
+                    Curso novoCurso = new Curso(codCurso);
 
                     //Criando disciplina
-                    Disciplina novaDisciplina = new Disciplina();
-                    novaDisciplina.setCodDisciplina(codDisciplina);
-                    novaDisciplina.setNota(nota);
-                    novaDisciplina.setCargaHoraria(cargaHoraria);
-
+                    Disciplina novaDisciplina = new Disciplina(codDisciplina, cargaHoraria, nota, anoSemestre);
 
                     //Criando aluno
-                    Aluno novoAluno = new Aluno();
-                    novoAluno.setMatricula(matricula);
+                    Aluno novoAluno = new Aluno(matricula);
                     novoAluno.addDisciplina(codDisciplina, novaDisciplina);
 
 
