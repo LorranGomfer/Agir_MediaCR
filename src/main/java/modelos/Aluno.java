@@ -13,8 +13,7 @@ public class Aluno {
         this.matricula = matricula;
         this.disciplinas = new HashMap<>();
     }
-    public Map<String, Disciplina> mapDisciplinas() { //Retorna o conjunto de disciplinas
-
+    public Map<String, Disciplina> mapDisciplinas() {
         return disciplinas;
     }
 
@@ -24,13 +23,13 @@ public class Aluno {
 
     public void addDisciplina(String CodDisciplina, Disciplina disciplina) {
 
-        if (!existDisciplina(disciplina.getCodDisciplina())) { //Se não existe essa disciplina, adiciona
+        if (!existDisciplina(disciplina.getCodDisciplina())) {
             disciplinas.put(CodDisciplina, disciplina);
-        }//else System.out.println("Sobrescrição disciplina");
+        }
         
     }
 
-    public boolean existDisciplina(String codDisciplina) { //Verifica se essa disciplina já existe neste aluno
+    public boolean existDisciplina(String codDisciplina) {
 
         if (disciplinas.get(codDisciplina) == null) {
             return false;
@@ -52,7 +51,7 @@ public class Aluno {
         double soma = 0.0;
         int chtotal = 0;
 
-        for (String key : disciplinas.keySet()) { // Para cada disciplinas dentro desse aluno
+        for (String key : disciplinas.keySet()) {
 
             soma += disciplinas.get(key).getNota() * disciplinas.get(key).getCargaHoraria();
             chtotal += disciplinas.get(key).getCargaHoraria();
